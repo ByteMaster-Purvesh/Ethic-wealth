@@ -1,33 +1,31 @@
-const express = require('express')
-const route = express.Router()
-const userModule = require("../Modules/user.module.js")
+const express = require('express');
+const router = express.Router();
+const authController = require('../Controllers/auth.controller');
+const { verifyToken } = require('../Middleware/auth.middleware');
+const { 
+    registerValidationRules, 
+    loginValidationRules, 
+    validateAuth 
+} = require('../Middleware/auth.validation.middleware');
 
-route.post('/register', async (req, res) => {
-    const {username, email, password} = req.body
+// @route   POST /api/auth/register
+// @desc    Register user
+// @access  Public
+router.post('/register', registerValidationRules(), validateAuth, authController.register);
 
-    //validation
-    if(!username || !email || !password){
-        return res.status(400).json({ massage: "All fields are required" })
-    }
+// @route   POST /api/auth/login
+// @desc    Login user
+// @access  Public
+router.post('/login', loginValidationRules(), validateAuth, authController.login);
 
-    const isUseralreadyexist = await userModule.find({
-        $or: [
-            { username },
-            { email }
-        ]
-    })
+// @route   GET /api/auth/me
+// @desc    Get user profile
+// @access  Private
+router.get('/me', verifyToken, authController.getMe);
 
-    if(isUseralreadyexist){
-        res.status(400).json({
-            massage: `User already register! ${email == email? "Email" : "Username"}`
-        })
-    } 
+// @route   POST /api/auth/logout
+// @desc    Logout user
+// @access  Private
+router.post('/logout', verifyToken, authController.logout);
 
-    res.status(201).json({
-        massage: 'User got register successfully!',
-        user
-    })
-})
-
-
-module.exports = route
+module.exports = router;

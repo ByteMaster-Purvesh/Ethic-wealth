@@ -6,6 +6,7 @@ import Stats from './Stats';
 import WhyChooseUs from './WhyChooseUs';
 import Services from './Services';
 import Callback from './Callback';
+import Calculator from './Calculator';
 import Projects from './Projects';
 import Team from './Team';
 import Testimonial from './Testimonial';
@@ -38,7 +39,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 90000);
+    const timer = setInterval(nextSlide, 6000);
     return () => clearInterval(timer);
   }, []);
 
@@ -98,16 +99,16 @@ const Home = () => {
       {/* Navigation Arrows */}
       <button 
         onClick={prevSlide}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-6 md:w-8 md:h-10 lg:w-14 lg:h-12 bg-[#8da5ff] hover:bg-[#6c8cf8] text-white flex items-center justify-center rounded-r-full transition-colors z-20"
+        className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 w-4 h-6 md:w-8 md:h-10 lg:w-14 lg:h-12 bg-blue-400 hover:bg-blue-600 text-white flex items-center justify-center rounded-r-full transition-colors z-20 group"
       >
-        <ChevronLeft className="w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6" />
+        <ChevronLeft className="w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6 transform group-hover:-translate-x-1.5 transition-transform duration-300" />
       </button>
 
       <button 
         onClick={nextSlide}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-6 md:w-8 md:h-10 lg:w-14 lg:h-12 bg-[#8da5ff] hover:bg-[#6c8cf8] text-white flex items-center justify-center rounded-l-full transition-colors z-20"
+        className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 w-4 h-6 md:w-8 md:h-10 lg:w-14 lg:h-12 bg-blue-400 hover:bg-blue-600 text-white flex items-center justify-center rounded-l-full transition-colors z-20 group"
       >
-        <ChevronRight className="w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6" />
+        <ChevronRight className="w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6 transform group-hover:translate-x-1.5 transition-transform duration-300" />
       </button>
 
       {/* Scroll to top placeholder (usually handled globally, but placed here to match design) */}
@@ -124,6 +125,7 @@ const Home = () => {
     <Stats />
     <WhyChooseUs />
     <Services />
+    <Calculator />
     <Callback />
     <Projects />
     <Team />

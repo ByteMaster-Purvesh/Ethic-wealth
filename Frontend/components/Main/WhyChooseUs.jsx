@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const IconCheck = ({ size = 56, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 448 512" fill={color} xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +30,13 @@ const WhyChooseUs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Left Column - Text Content */}
-          <div className="space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
             <div className="inline-block px-4 py-2 rounded-full border border-blue-200 bg-white text-blue-600 text-sm font-medium">
               Why Choosing Us!
             </div>
@@ -48,13 +55,19 @@ const WhyChooseUs = () => {
               <span>Read More</span>
               <ArrowRight size={16} />
             </button>
-          </div>
+          </motion.div>
 
           {/* Right Column - Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
             {/* Column 1: Two cards */}
             <div className="space-y-6">
-              <div className="bg-white border border-blue-100 rounded-lg p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all">
+              <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-white border border-blue-100 rounded-lg p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all"
+              >
                 <div className="text-blue-600 mb-5">
                   <IconCheck size={40} />
                 </div>
@@ -66,9 +79,15 @@ const WhyChooseUs = () => {
                   <span>Read More</span>
                   <ArrowRight size={14} />
                 </a>
-              </div>
+              </motion.div>
               
-              <div className="bg-white border border-blue-100 rounded-lg p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all">
+              <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="bg-white border border-blue-100 rounded-lg p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all"
+              >
                 <div className="text-blue-600 mb-5">
                   <IconCheck size={40} />
                 </div>
@@ -80,12 +99,18 @@ const WhyChooseUs = () => {
                   <span>Read More</span>
                   <ArrowRight size={14} />
                 </a>
-              </div>
+              </motion.div>
             </div>
 
             {/* Column 2: One card, pushed down */}
             <div className="space-y-6 sm:mt-20">
-              <div className="bg-white border border-blue-100 rounded-lg p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all">
+              <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="bg-white border border-blue-100 rounded-lg p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all"
+              >
                 <div className="text-blue-600 mb-5">
                   <IconCheck size={40} />
                 </div>
@@ -97,7 +122,7 @@ const WhyChooseUs = () => {
                   <span>Read More</span>
                   <ArrowRight size={14} />
                 </a>
-              </div>
+              </motion.div>
             </div>
           </div>
           

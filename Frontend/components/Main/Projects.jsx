@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Projects = () => {
   const scrollContainerRef = useRef(null);
@@ -32,22 +33,35 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header section */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-block border border-blue-200 bg-white text-blue-500 rounded-full px-5 py-1.5 text-sm font-medium mb-4 shadow-sm">
             Our Projects
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#0b1b3d] leading-tight">
             We Have Completed<br />Latest Projects
           </h2>
-        </div>
+        </motion.div>
 
         {/* Projects Slider */}
         <div 
           ref={scrollContainerRef}
           className="flex overflow-x-auto snap-x snap-mandatory gap-8 mb-16 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {projects.map((project) => (
-            <div key={project.id} className="min-w-[100%] md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.4rem)] snap-start relative group flex flex-col items-center">
+          {projects.map((project, index) => (
+            <motion.div 
+              key={project.id} 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="min-w-[100%] md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.4rem)] snap-start relative group flex flex-col items-center"
+            >
               {/* Image */}
               <div className="w-full aspect-[4/5] rounded-xl overflow-hidden relative">
                 <img 
@@ -61,7 +75,7 @@ const Projects = () => {
               <div className="absolute -bottom-6 w-[85%] bg-white rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.08)] py-4 text-center border border-gray-50 z-10 transition-colors group-hover:border-blue-200 cursor-pointer">
                 <h3 className="text-lg font-bold text-[#0b1b3d]">{project.title}</h3>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

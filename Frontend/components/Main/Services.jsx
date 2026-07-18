@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AlignLeft, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -56,7 +57,13 @@ const Services = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           
           {/* Panel 1: Left Tabs */}
-          <div className="flex flex-col justify-between space-y-3">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col justify-between space-y-3"
+          >
             {tabs.map((tab, index) => {
               const isActive = activeTab === index;
               return (
@@ -76,19 +83,31 @@ const Services = () => {
                 </button>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Panel 2: Center Image (Square) */}
-          <div className="w-full aspect-square rounded-xl overflow-hidden relative group">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full aspect-square rounded-xl overflow-hidden relative group"
+          >
             <img 
               src={content[activeTab].image} 
               alt={tabs[activeTab].title}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-xl"
             />
-          </div>
+          </motion.div>
 
           {/* Panel 3: Right Text Content */}
-          <div className="flex flex-col justify-center">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col justify-center"
+          >
             <h3 className="text-2xl md:text-[28px] lg:text-3xl font-extrabold text-[#0b1b3d] mb-4 leading-[1.3]">
               {content[activeTab].title}
             </h3>
@@ -112,7 +131,7 @@ const Services = () => {
                 Read More
               </button>
             </div>
-          </div>
+          </motion.div>
           
         </div>
         </div>

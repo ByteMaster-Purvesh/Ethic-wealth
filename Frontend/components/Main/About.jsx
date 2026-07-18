@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { X, Users, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
 import PageHeader from '../Header/PageHeader';
 import Stats from './Stats';
 import Team from './Team';
@@ -54,16 +55,28 @@ const About = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mb-10 items-stretch box-border">
           {/* Left Column - Image */}
-          <div className="relative w-full h-[450px] lg:h-[620px] lg:col-span-6 box-border">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full h-[450px] lg:h-[620px] lg:col-span-6 box-border"
+          >
             <img 
               src="/about.jpg" 
               alt="About Us - Team" 
               className="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg box-border"
             />
-          </div>
+          </motion.div>
 
           {/* Right Column - Text Content */}
-          <div className="flex flex-col justify-between lg:col-span-6 pt-6 box-border h-full">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col justify-between lg:col-span-6 pt-6 box-border h-full"
+          >
             <div className="space-y-4">
               <div className="inline-block px-4 py-2 rounded-full border border-blue-200 bg-white text-blue-600 text-sm font-medium box-border mt-20">
                 About Us
@@ -103,14 +116,20 @@ const About = () => {
                 {tabContent[activeTab]}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 box-border">
           
           {/* Feature 1 */}
-          <div className="flex items-start space-x-4 p-6 border border-blue-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-start space-x-4 p-6 border border-blue-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"
+          >
             <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white">
               <X size={20} strokeWidth={2.5} />
             </div>
@@ -120,10 +139,16 @@ const About = () => {
                 Clita erat ipsum lorem sit sed stet duo justo
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Feature 2 */}
-          <div className="flex items-start space-x-4 p-6 border border-blue-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex items-start space-x-4 p-6 border border-blue-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"
+          >
             <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white">
               <Users size={20} strokeWidth={2.5} />
             </div>
@@ -133,10 +158,16 @@ const About = () => {
                 Clita erat ipsum lorem sit sed stet duo justo
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Feature 3 */}
-          <div className="flex items-start space-x-4 p-6 border border-blue-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex items-start space-x-4 p-6 border border-blue-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"
+          >
             <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white">
               <Phone size={20} strokeWidth={2.5} />
             </div>
@@ -146,7 +177,7 @@ const About = () => {
                 Clita erat ipsum lorem sit sed stet duo justo
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

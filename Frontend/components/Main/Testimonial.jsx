@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Testimonial = () => {
   const scrollContainerRef = useRef(null);
@@ -79,21 +80,33 @@ const Testimonial = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header section */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-block border border-blue-200 bg-white text-blue-500 rounded-full px-5 py-1.5 text-sm font-medium mb-4 shadow-sm">
             Testimonial
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#0b1b3d] leading-tight">
             What Our Clients Say!
           </h2>
-        </div>
+        </motion.div>
 
         {/* Testimonials Slider */}
-        <div 
-          ref={scrollContainerRef}
-          onScroll={handleScroll}
-          className="relative flex overflow-x-auto snap-x snap-mandatory gap-6 lg:gap-10 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="relative flex overflow-x-auto snap-x snap-mandatory gap-6 lg:gap-10 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
           {/* Spacer before to allow first item to center */}
           <div className="shrink-0 snap-center w-[0%] md:w-[calc(50%-25%-0.375rem)] lg:w-[calc(50%-16.666%-0.83rem)]"></div>
           
@@ -127,6 +140,7 @@ const Testimonial = () => {
           {/* Spacer after to allow last item to center */}
           <div className="shrink-0 snap-center w-[0%] md:w-[calc(50%-25%-0.375rem)] lg:w-[calc(50%-16.666%-0.83rem)]"></div>
         </div>
+        </motion.div>
 
         {/* Pagination Dots */}
         <div className="flex justify-center items-center gap-3 mt-12">

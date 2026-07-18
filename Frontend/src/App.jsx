@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from '../context/auth.context'
 import Lenis from '@studio-freight/lenis'
 import Navbar from '../components/Navbar/Navbar'
 import Home from '../components/Main/Home'
@@ -10,6 +11,8 @@ import TeamMember from '../pages/TeamMember'
 import Testimonial from '../pages/Testimonial'
 import Project from '../pages/Project'
 import Feature from '../pages/Feature'
+import Login from '../pages/Login'
+import Signup from '../pages/Signup'
 
 function App() {
   useEffect(() => {
@@ -38,23 +41,27 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <div className="font-sans antialiased text-gray-800">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/server" element={<Server />} />
-            <Route path="/pages/team-member" element={<TeamMember />} />
-            <Route path="/pages/testimonial" element={<Testimonial />} />
-            <Route path="/pages/project" element={<Project />} />
-            <Route path="/pages/feature" element={<Feature />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="font-sans antialiased text-gray-800">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/server" element={<Server />} />
+              <Route path="/pages/team-member" element={<TeamMember />} />
+              <Route path="/pages/testimonial" element={<Testimonial />} />
+              <Route path="/pages/project" element={<Project />} />
+              <Route path="/pages/feature" element={<Feature />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </AuthProvider>
   )
 }
 
